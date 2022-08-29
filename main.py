@@ -207,7 +207,23 @@
 # print(res)
 
 ''' SO SOlution 16 '''
-import urllib.parse
-url = "https://www.some.com/8343b54b1a55dbf1a003af0d0c7e9ba4ea762245?redirect=http%3A%2F%2Ffacebook.com%2F782596948538540".split('redirect=')[-1]
-print(urllib.parse.unquote(url))
+# import urllib.parse
+# url = "https://www.some.com/8343b54b1a55dbf1a003af0d0c7e9ba4ea762245?redirect=http%3A%2F%2Ffacebook.com%2F782596948538540".split('redirect=')[-1]
+# print(urllib.parse.unquote(url))
 
+''' SO Solution 17 '''
+import json
+def main():
+    with open("test.json", "r") as f:
+        File = json.load(f)
+    total = len(File['questions'])
+    for i in range(1,total+1):
+        name = File["questions"][str(i)]["answer"]
+        print("Enter type of filename (#{}) :".format(i))
+        answer = input("Answer: ")
+        print("Correct!" if answer==name else "Incorrect!")
+    else:
+        print("No more questions are available.")
+        return False # To break the loop but didn't work at all
+
+main()
